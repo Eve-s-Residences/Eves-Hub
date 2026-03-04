@@ -45,7 +45,7 @@ function changeFrame(type) {
       break;
 
     case "jo":
-      newSrc = "https://eves-residence.github.io/JOB-ORDER/";
+      newSrc = "https://eve-s-residences.github.io/JOB-ORDER/";
       break;
 
     case "feedback":
