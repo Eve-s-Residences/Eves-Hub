@@ -249,20 +249,31 @@
 
       let newSrc = "";
       switch (type) {
-        case "calendar": sectionCalendar.classList.remove('hidden'); break;
-        case "task": sectionTask.classList.remove('hidden'); if(typeof fetchTasks === 'function') fetchTasks(); break;
-        case "verify": newSrc = "https://eves-residence.github.io/Control-Number-Verification/"; break;
-        case "master": newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/edit?usp=sharing"; break;
-        case "vacancy": newSrc = "https://docs.google.com/spreadsheets/d/1Z_3YqO4ve0TvbkV4Lrg6X9utii7EswQiwnczFcAKvsI/edit?usp=sharing"; break;
-        case "bnb": newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/edit?usp=sharing"; break;
-        case "jo": newSrc = "https://eves-residence.github.io/JOB-ORDER"; break;
+        case "calendar": sectionCalendar.classList.remove('hidden'); 
+        break;
+        case "task": sectionTask.classList.remove('hidden'); if(typeof fetchTasks === 'function') fetchTasks(); 
+        break;
+        case "verify": newSrc = "https://eve-s-residences.github.io/Control-Number-Verification/"; 
+        break;
+        case "master": newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/edit?usp=sharing"; 
+        break;
+        case "vacancy": newSrc = "https://docs.google.com/spreadsheets/d/1Z_3YqO4ve0TvbkV4Lrg6X9utii7EswQiwnczFcAKvsI/edit?usp=sharing"; 
+        break;
+        case "bnb": newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/edit?usp=sharing"; 
+        break;
+        case "jo": newSrc = "https://eves-residence.github.io/JOB-ORDER"; 
+        break;
         
         // ✅ UPDATED: Points to Google Drive Folder Grid View
-        case "actSys": newSrc = "https://drive.google.com/embeddedfolderview?id=1_veJNEd8t5g87H0er3yO_4CFNVyYq4b8#grid"; break;
+        case "actSys": newSrc = "https://drive.google.com/embeddedfolderview?id=1_veJNEd8t5g87H0er3yO_4CFNVyYq4b8#grid"; 
+        break;
         
-        case "attendance": newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSfXacHkUdWuQNvv1Pwcyx--NDFqFwjITTYL7672ZL6BG4-SgA/viewform?embedded=true"; break;
-        case "off": newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSdgQKxcuAsomlhDX6yDsPI1s5O-x-u36-YPtHGGu-33QMMMCQ/viewform?embedded=true"; break;
-        case "ca": newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSfhw4VyYKI9fc05UGtkvpRx0kIo98QRTKQsH_3NTpZAdzxi4w/viewform?embedded=true"; break;
+        case "attendance": newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSfXacHkUdWuQNvv1Pwcyx--NDFqFwjITTYL7672ZL6BG4-SgA/viewform?embedded=true"; 
+        break;
+        case "off": newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSdgQKxcuAsomlhDX6yDsPI1s5O-x-u36-YPtHGGu-33QMMMCQ/viewform?embedded=true"; 
+        break;
+        case "ca": newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSfhw4VyYKI9fc05UGtkvpRx0kIo98QRTKQsH_3NTpZAdzxi4w/viewform?embedded=true"; 
+        break;
       }
 
       if (newSrc) {

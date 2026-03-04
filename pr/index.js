@@ -13,9 +13,9 @@ function changeFrame(type) {
   let newSrc = "";
   switch (type) {
     case "verify":
-      newSrc = "https://eves-residence.github.io/Control-Number-Verification/";
+      newSrc = "https://eve-s-residences.github.io/Control-Number-Verification/";
       break;
-      
+
     case "master":
       newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/edit?usp=sharing";
       break;
