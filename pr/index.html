@@ -114,6 +114,9 @@
         <button onclick="changeFrame('master', this)" class="sidebar-link">
           <span class="material-symbols-outlined mr-3">database</span> Master List
         </button>
+        <button onclick="changeFrame('verify', this)" class="sidebar-link">
+          <span class="material-symbols-outlined mr-3">check_circle</span>  Verify Tenants
+        </button>
         <button onclick="changeFrame('vacancy', this)" class="sidebar-link">
           <span class="material-symbols-outlined mr-3">door_open</span> Vacancy
        </button>
@@ -248,6 +251,7 @@
       switch (type) {
         case "calendar": sectionCalendar.classList.remove('hidden'); break;
         case "task": sectionTask.classList.remove('hidden'); if(typeof fetchTasks === 'function') fetchTasks(); break;
+        case "verify": newSrc = "https://eves-residence.github.io/Control-Number-Verification/"; break;
         case "master": newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/edit?usp=sharing"; break;
         case "vacancy": newSrc = "https://docs.google.com/spreadsheets/d/1Z_3YqO4ve0TvbkV4Lrg6X9utii7EswQiwnczFcAKvsI/edit?usp=sharing"; break;
         case "bnb": newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/edit?usp=sharing"; break;
