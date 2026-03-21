@@ -15,8 +15,8 @@ const access = {
         names: ["Marla", "Avy", "Teph dy"]
     },
     marketing: {
-        password: "market456",
-        names: ["Ever", "Teph dy"]
+        password: "evesMoneyGenerator2026",
+        names: ["Ever", "Teph dy", "Gray"]
     },
     secretary: {
         password: "secret",
