@@ -16,7 +16,7 @@ function changeFrame(type) {
       break;
 
     case "search":
-      newSrc = "https://tephdy.github.io/WEB-APP/";
+      newSrc = "https://eve-s-residences.github.io/Property-Search/";
       break;
 
     case "waitlist":
