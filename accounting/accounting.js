@@ -29,7 +29,7 @@ function changeFrame(type, element) {
         case "master":
             newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/edit?usp=sharing";
             break;
-        case "actSys": newSrc = "https://drive.google.com/embeddedfolderview?id=1_veJNEd8t5g87H0er3yO_4CFNVyYq4b8#grid"; 
+        case "actSys": newSrc = "https://drive.google.com/drive/folders/1oQfKiLFFGQAfjpQzNe2SjtBX-7a0BVOx#grid"; 
         break;
         case "bnb":
             newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/edit?usp=sharing";
