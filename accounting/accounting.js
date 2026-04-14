@@ -14,6 +14,7 @@ function changeFrame(type, element) {
         if (sec) sec.classList.add('hidden');
     });
 
+    // Reset iframe visibility for new load
     iframe.style.display = "none";
     iframe.style.opacity = 0;
 
@@ -27,12 +28,16 @@ function changeFrame(type, element) {
             fetchTasks(); 
             break;
         case "master":
-            newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/edit?usp=sharing";
+            // FIXED: Changed /edit to /preview to allow embedding
+            newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/preview";
             break;
-        case "actSys": newSrc = "https://drive.google.com/drive/folders/1oQfKiLFFGQAfjpQzNe2SjtBX-7a0BVOx#grid"; 
-        break;
+        case "actSys": 
+            // FIXED: Used the Google Drive EMBED folder view URL
+            newSrc = "https://drive.google.com/embeddedfolderview?id=1oQfKiLFFGQAfjpQzNe2SjtBX-7a0BVOx#grid"; 
+            break;
         case "bnb":
-            newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/edit?usp=sharing";
+            // FIXED: Changed /edit to /preview to allow embedding
+            newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/preview";
             break;
         case "bnb_dates":
             newSrc = "https://calendar.google.com/calendar/embed?src=00c9b4f66e0573f992bb911bb11ddc608ccb021f2be44fa6cfdc633de1463f82%40group.calendar.google.com&ctz=Asia%2FManila";
@@ -51,9 +56,10 @@ function changeFrame(type, element) {
     if (newSrc) {
         if (loader) loader.style.display = "flex";
         if (sectionIframe) sectionIframe.classList.remove('hidden');
-        iframe.style.display = "block";
         
         iframe.src = newSrc;
+        iframe.style.display = "block"; // Must be block for onload to trigger reliably
+
         iframe.onload = () => {
             if (loader) loader.style.display = "none";
             iframe.style.transition = "opacity 0.4s ease";
@@ -100,7 +106,7 @@ filterContainer.innerHTML = `
     </select>
   </div>
 `;
-taskList.parentNode.insertBefore(filterContainer, taskList);
+if (taskList) taskList.parentNode.insertBefore(filterContainer, taskList);
 
 document.getElementById("applyFilter").onclick = () => renderTasks();
 document.getElementById("clearFilter").onclick = () => {
@@ -113,7 +119,7 @@ document.getElementById("clearFilter").onclick = () => {
 const safe = s => s ? String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])) : "";
 
 async function fetchTasks() {
-    if (allTasks.length === 0) taskList.innerHTML = "<p style='padding:20px; color:#666;'>Loading tasks...</p>";
+    if (allTasks.length === 0 && taskList) taskList.innerHTML = "<p style='padding:20px; color:#666;'>Loading tasks...</p>";
     try {
         const res = await fetch(scriptURL);
         const text = await res.text();
@@ -136,6 +142,7 @@ function renderTasks() {
     const pF = document.getElementById("priorityFilter").value;
     const aF = document.getElementById("assignedByFilter").value;
 
+    if (!taskList) return;
     taskList.innerHTML = "";
     taskList.style.cssText = "display:flex !important; flex-direction:row !important; overflow-x:auto !important; gap:20px !important; padding:10px !important; align-items:flex-start !important;";
 
@@ -150,8 +157,7 @@ function renderTasks() {
         const status = (t["STATUS"] || "Not Started").trim();
         let color = status === "Completed" ? "#4CAF50" : (status === "In Progress" ? "#FFC107" : "#F44336");
         const sourceDept = String(t.source || "").trim().toLowerCase();
-        const targetDept = String(t["ASSIGNED TO"] || "").trim().toLowerCase();
-
+        
         const canEdit = sourceDept === "accounting";
 
         const div = document.createElement("div");
@@ -185,7 +191,7 @@ function renderTasks() {
     });
 }
 
-// ✅ MODAL INJECTION (Edit & View Modals)
+// ✅ MODAL INJECTION
 const modalsHTML = `
   <div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
     <div style="background:#fff; padding:20px; border-radius:10px; width:90%; max-width:450px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
@@ -268,26 +274,27 @@ async function deleteTask(index) {
     } catch (e) { alert("Deletion failed."); }
 }
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    responseMsg.textContent = "⏳ Saving...";
-    const task = {
-        action: "add",
-        taskName: document.getElementById("taskName").value.trim(),
-        priority: document.getElementById("priority").value,
-        assignedBy: document.getElementById("assignedBy").value.trim(),
-        assignTo: document.getElementById("assignTo").value,
-        dueDate: document.getElementById("dueDate").value,
-        notes: document.getElementById("notes").value.trim(),
-    };
-    try {
-        await fetch(scriptURL, { method: "POST", body: JSON.stringify(task) });
-        responseMsg.textContent = "✅ Saved!";
-        form.reset();
-        setTimeout(fetchTasks, 800);
-    } catch (e) { responseMsg.textContent = "❌ Error"; }
-});
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        responseMsg.textContent = "⏳ Saving...";
+        const task = {
+            action: "add",
+            taskName: document.getElementById("taskName").value.trim(),
+            priority: document.getElementById("priority").value,
+            assignedBy: document.getElementById("assignedBy").value.trim(),
+            assignTo: document.getElementById("assignTo").value,
+            dueDate: document.getElementById("dueDate").value,
+            notes: document.getElementById("notes").value.trim(),
+        };
+        try {
+            await fetch(scriptURL, { method: "POST", body: JSON.stringify(task) });
+            responseMsg.textContent = "✅ Saved!";
+            form.reset();
+            setTimeout(fetchTasks, 800);
+        } catch (e) { responseMsg.textContent = "❌ Error"; }
+    });
+}
 
 window.addEventListener("load", fetchTasks);
 setInterval(fetchTasks, 30000); // 30s Auto-Refresh
-
