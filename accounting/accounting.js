@@ -35,6 +35,11 @@ function changeFrame(type, element) {
             // FIXED: Used the Google Drive EMBED folder view URL
             newSrc = "https://drive.google.com/embeddedfolderview?id=1oQfKiLFFGQAfjpQzNe2SjtBX-7a0BVOx#grid"; 
             break;
+
+        case "digitalContract": 
+            // FIXED: Used the Google Drive EMBED folder view URL
+            newSrc = "https://drive.google.com/drive/folders/1h9MRbhbyOBu1ZBCXtTp3172wzrP-CE7w?usp=sharing#grid"; 
+            break;
         case "bnb":
             // FIXED: Changed /edit to /preview to allow embedding
             newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/preview";
