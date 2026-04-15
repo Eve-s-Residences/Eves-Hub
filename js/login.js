@@ -32,7 +32,7 @@ const access = {
     },
     accounting: {
         password: "evesAccounting2025",
-        names: ["Brenda", "Mother"] // No restriction (anyone with password can log in)
+        names: ["Brenda", "Nitz"] // No restriction (anyone with password can log in)
     }
 };
 
