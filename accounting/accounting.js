@@ -1,4 +1,4 @@
-//// WORKING AS OF 12/13/2025
+//// WORKING AS OF 2026
 // ==========================================
 // 1. SINGLE-FUNCTION IFRAME CONTROLLER
 // ==========================================
@@ -37,11 +37,12 @@ function changeFrame(type, element) {
             break;
 
         case "digitalContract": 
-            // FIXED: Used the Google Drive EMBED folder view URL
-            newSrc = "https://drive.google.com/drive/folders/1h9MRbhbyOBu1ZBCXtTp3172wzrP-CE7w?usp=sharing#grid"; 
+            // FIXED: Use 'embeddedfolderview' instead of 'drive/folders'
+            newSrc = "https://drive.google.com/embeddedfolderview?id=1h9MRbhbyOBu1ZBCXtTp3172wzrP-CE7w#grid"; 
             break;
+
         case "bnb":
-            // FIXED: Changed /edit to /preview to allow embedding
+            // FIXED: Changed /edit to /preview
             newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/preview";
             break;
         case "bnb_dates":
@@ -63,7 +64,7 @@ function changeFrame(type, element) {
         if (sectionIframe) sectionIframe.classList.remove('hidden');
         
         iframe.src = newSrc;
-        iframe.style.display = "block"; // Must be block for onload to trigger reliably
+        iframe.style.display = "block"; 
 
         iframe.onload = () => {
             if (loader) loader.style.display = "none";
@@ -162,7 +163,6 @@ function renderTasks() {
         const status = (t["STATUS"] || "Not Started").trim();
         let color = status === "Completed" ? "#4CAF50" : (status === "In Progress" ? "#FFC107" : "#F44336");
         const sourceDept = String(t.source || "").trim().toLowerCase();
-        
         const canEdit = sourceDept === "accounting";
 
         const div = document.createElement("div");
@@ -212,7 +212,6 @@ const modalsHTML = `
       </div>
     </div>
   </div>
-
   <div id="viewModalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:1000;">
     <div style="background:#fff; padding:25px; border-radius:15px; width:90%; max-width:500px; max-height:80vh; overflow-y:auto;">
       <h2 id="viewTaskName" style="margin-top:0; color:#2d3748;"></h2>
@@ -302,4 +301,4 @@ if (form) {
 }
 
 window.addEventListener("load", fetchTasks);
-setInterval(fetchTasks, 30000); // 30s Auto-Refresh
+setInterval(fetchTasks, 30000);
