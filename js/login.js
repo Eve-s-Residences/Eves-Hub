@@ -22,7 +22,7 @@ const access = {
         names: ["Havila", "Teph dy"]
     },
     IT: {
-        password: "hackerboi2499",
+        password: "evesDevTeam2025",
         names: ["Teph Dy", "Dave"] 
     },
     maintenance: {
