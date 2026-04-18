@@ -48,6 +48,10 @@ function changeFrame(type, element) {
         case "bnb_dates":
             newSrc = "https://calendar.google.com/calendar/embed?src=00c9b4f66e0573f992bb911bb11ddc608ccb021f2be44fa6cfdc633de1463f82%40group.calendar.google.com&ctz=Asia%2FManila";
             break;
+
+        case "inventory": newSrc = "https://docs.google.com/spreadsheets/d/1ancgHFN7RBRH9EUXgRPTs6z0FIv1KhRbQtI0o96hR8E/edit?gid=0#gid=0"; 
+        break;
+        
         case "attendance":
             newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSfXacHkUdWuQNvv1Pwcyx--NDFqFwjITTYL7672ZL6BG4-SgA/viewform?embedded=true";
             break;
