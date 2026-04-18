@@ -48,6 +48,10 @@ function changeFrame(type) {
       newSrc = "https://eve-s-residences.github.io/JOB-ORDER/";
       break;
 
+      case "inventory": 
+      newSrc = "https://docs.google.com/spreadsheets/d/1ancgHFN7RBRH9EUXgRPTs6z0FIv1KhRbQtI0o96hR8E/edit?gid=0#gid=0"; 
+        break;
+
     case "feedback":
       newSrc = "https://docs.google.com/forms/d/e/1FAIpQLSc4Nu4EaO-AWIRGSFDixPxj9jMOZ-prjuNlOcnFUKzWKbGE-Q/viewform?embedded=true";
       break;
