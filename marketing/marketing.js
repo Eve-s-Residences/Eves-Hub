@@ -22,6 +22,8 @@ function changeFrame(type, element) {
         case "calendar": if (sectionCalendar) sectionCalendar.classList.remove('hidden'); break;
         case "task": if (sectionTask) sectionTask.classList.remove('hidden'); fetchTasks(); break;
         case "master": newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/edit?usp=sharing"; break;
+        case "monitoring": newSrc = "https://docs.google.com/spreadsheets/d/1wdBqtemOoYUsUXBDNIHpuypZXnSf5juY1gRzpy1yp0I/edit?gid=0#gid=0"; 
+        break;
         case "search": newSrc = "https://tephdy.github.io/WEB-APP/"; break;
         case "waitlist": newSrc = "https://docs.google.com/spreadsheets/d/1S2v43l75aC6EpyCkXNifSfFYvuXE_XJ9HPcr0RDyhtg/edit?usp=sharing"; break;
         case "bnb": newSrc = "https://docs.google.com/spreadsheets/d/1aWdlIT9aRwT4FktT_3oB0poxC8xyC0lOTDKEj574M2Y/edit?usp=sharing"; break;

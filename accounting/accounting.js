@@ -31,6 +31,11 @@ function changeFrame(type, element) {
             // FIXED: Changed /edit to /preview to allow embedding
             newSrc = "https://docs.google.com/spreadsheets/d/15ouIKyyo1pfegl7oMxUgNgy_36JPb87Ta4JGxgws5HI/preview";
             break;
+
+        case "monitoring":
+            newSrc = "https://docs.google.com/spreadsheets/d/1wdBqtemOoYUsUXBDNIHpuypZXnSf5juY1gRzpy1yp0I/edit?gid=0#gid=0";
+            break;
+
         case "actSys": 
             // FIXED: Used the Google Drive EMBED folder view URL
             newSrc = "https://drive.google.com/embeddedfolderview?id=1oQfKiLFFGQAfjpQzNe2SjtBX-7a0BVOx#grid"; 
